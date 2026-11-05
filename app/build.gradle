@@ -1,0 +1,16 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'dev.nixie01.watchface'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'dev.nixie01.watchface'
+        minSdk 35
+        targetSdk 36
+        versionCode 1
+        versionName '0.2'
+    }
+}

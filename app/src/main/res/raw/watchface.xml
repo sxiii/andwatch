@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WatchFace xmlns="https://schemas.android.com/wear/watchface"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/google/watchface/main/watchface.xsd"
+    version="4">
+    <BitmapFonts>
+        <BitmapFont name="nixie_digits">
+            <Character name="0" resource="digit_0" width="74" height="180"/>
+            <Character name="1" resource="digit_1" width="74" height="180"/>
+            <Character name="2" resource="digit_2" width="74" height="180"/>
+            <Character name="3" resource="digit_3" width="74" height="180"/>
+            <Character name="4" resource="digit_4" width="74" height="180"/>
+            <Character name="5" resource="digit_5" width="74" height="180"/>
+            <Character name="6" resource="digit_6" width="74" height="180"/>
+            <Character name="7" resource="digit_7" width="74" height="180"/>
+            <Character name="8" resource="digit_8" width="74" height="180"/>
+            <Character name="9" resource="digit_9" width="74" height="180"/>
+            <Character name=":" resource="colon" width="18" height="180"/>
+        </BitmapFont>
+    </BitmapFonts>
+    <Scene>
+        <Background>
+            <Color value="#000000"/>
+        </Background>
+        <PartImage x="0" y="0" width="450" height="450">
+            <Image resource="nixie_background"/>
+        </PartImage>
+        <DigitalClock x="0" y="143" width="450" height="164">
+            <TimeText x="0" y="0" width="450" height="164" format="HH:mm:ss"
+                align="CENTER" verticalAlign="CENTER">
+                <BitmapFont family="nixie_digits" size="112" color="#FFFFFF"/>
+                <Variant mode="AMBIENT">
+                    <BitmapFont family="nixie_digits" size="104" color="#777777"/>
+                </Variant>
+            </TimeText>
+        </DigitalClock>
+        <PartAnimatedImage x="0" y="0" width="450" height="450">
+            <AnimationController play="ON_NEXT_SECOND" repeat="FALSE"
+                beforePlaying="DO_NOTHING" afterPlaying="DO_NOTHING"/>
+            <AnimatedImage resource="flicker" format="AGIF"/>
+            <Thumbnail resource="nixie_background"/>
+        </PartAnimatedImage>
+    </Scene>
+</WatchFace>

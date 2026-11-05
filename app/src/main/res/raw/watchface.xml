@@ -23,7 +23,7 @@
             <Image resource="nixie_background"/>
         </PartImage>
         <DigitalClock x="0" y="143" width="450" height="164">
-            <TimeText x="0" y="0" width="450" height="164" format="HH:mm:ss"
+            <TimeText x="0" y="0" width="450" height="164" format="hh:mm:ss"
                 align="CENTER" verticalAlign="CENTER">
                 <BitmapFont family="nixie_digits" size="112" color="#FFFFFF"/>
                 <Variant mode="AMBIENT">

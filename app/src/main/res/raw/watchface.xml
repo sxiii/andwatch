@@ -12,7 +12,6 @@
             <Character name="7" resource="digit_7" width="74" height="180"/>
             <Character name="8" resource="digit_8" width="74" height="180"/>
             <Character name="9" resource="digit_9" width="74" height="180"/>
-            <Character name=":" resource="colon" width="18" height="180"/>
         </BitmapFont>
     </BitmapFonts>
     <Scene>
@@ -22,15 +21,36 @@
         <PartImage x="0" y="0" width="450" height="450">
             <Image resource="nixie_background"/>
         </PartImage>
-        <DigitalClock x="0" y="143" width="450" height="164">
-            <TimeText x="0" y="0" width="450" height="164" format="hh:mm:ss"
+
+        <!-- One two-digit clock per vertical tube: hours, minutes, seconds. -->
+        <DigitalClock x="25" y="143" width="150" height="164">
+            <TimeText x="0" y="0" width="150" height="164" format="hh"
                 align="CENTER" verticalAlign="CENTER">
-                <BitmapFont family="nixie_digits" size="112" color="#FFFFFF"/>
+                <BitmapFont family="nixie_digits" size="88" color="#FFFFFF"/>
                 <Variant mode="AMBIENT">
-                    <BitmapFont family="nixie_digits" size="104" color="#777777"/>
+                    <BitmapFont family="nixie_digits" size="84" color="#777777"/>
                 </Variant>
             </TimeText>
         </DigitalClock>
+        <DigitalClock x="150" y="143" width="150" height="164">
+            <TimeText x="0" y="0" width="150" height="164" format="mm"
+                align="CENTER" verticalAlign="CENTER">
+                <BitmapFont family="nixie_digits" size="88" color="#FFFFFF"/>
+                <Variant mode="AMBIENT">
+                    <BitmapFont family="nixie_digits" size="84" color="#777777"/>
+                </Variant>
+            </TimeText>
+        </DigitalClock>
+        <DigitalClock x="275" y="143" width="150" height="164">
+            <TimeText x="0" y="0" width="150" height="164" format="ss"
+                align="CENTER" verticalAlign="CENTER">
+                <BitmapFont family="nixie_digits" size="88" color="#FFFFFF"/>
+                <Variant mode="AMBIENT">
+                    <BitmapFont family="nixie_digits" size="84" color="#777777"/>
+                </Variant>
+            </TimeText>
+        </DigitalClock>
+
         <PartAnimatedImage x="0" y="0" width="450" height="450">
             <AnimationController play="ON_NEXT_SECOND" repeat="FALSE"
                 beforePlaying="DO_NOTHING" afterPlaying="DO_NOTHING"/>

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WatchFace xmlns="https://schemas.android.com/wear/watchface"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/google/watchface/main/watchface.xsd"
-    version="4">
+<WatchFace width="450" height="450">
     <BitmapFonts>
         <BitmapFont name="nixie_digits">
             <Character name="0" resource="digit_0" width="74" height="180"/>

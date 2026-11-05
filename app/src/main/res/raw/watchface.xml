@@ -15,38 +15,36 @@
         </BitmapFont>
     </BitmapFonts>
     <Scene>
-        <Background>
-            <Color value="#000000"/>
-        </Background>
+        <Background><Color value="#000000"/></Background>
         <PartImage x="0" y="0" width="450" height="450">
             <Image resource="nixie_background"/>
         </PartImage>
 
-        <!-- One two-digit clock per vertical tube: hours, minutes, seconds. -->
-        <DigitalClock x="25" y="143" width="150" height="164">
-            <TimeText x="0" y="0" width="150" height="164" format="hh"
+        <!-- One horizontal tube per time component. -->
+        <DigitalClock x="110" y="42" width="230" height="106">
+            <TimeText x="0" y="0" width="230" height="106" format="hh"
                 align="CENTER" verticalAlign="CENTER">
-                <BitmapFont family="nixie_digits" size="88" color="#FFFFFF"/>
+                <BitmapFont family="nixie_digits" size="48" color="#FFFFFF"/>
                 <Variant mode="AMBIENT">
-                    <BitmapFont family="nixie_digits" size="84" color="#777777"/>
+                    <BitmapFont family="nixie_digits" size="46" color="#777777"/>
                 </Variant>
             </TimeText>
         </DigitalClock>
-        <DigitalClock x="150" y="143" width="150" height="164">
-            <TimeText x="0" y="0" width="150" height="164" format="mm"
+        <DigitalClock x="110" y="172" width="230" height="106">
+            <TimeText x="0" y="0" width="230" height="106" format="mm"
                 align="CENTER" verticalAlign="CENTER">
-                <BitmapFont family="nixie_digits" size="88" color="#FFFFFF"/>
+                <BitmapFont family="nixie_digits" size="48" color="#FFFFFF"/>
                 <Variant mode="AMBIENT">
-                    <BitmapFont family="nixie_digits" size="84" color="#777777"/>
+                    <BitmapFont family="nixie_digits" size="46" color="#777777"/>
                 </Variant>
             </TimeText>
         </DigitalClock>
-        <DigitalClock x="275" y="143" width="150" height="164">
-            <TimeText x="0" y="0" width="150" height="164" format="ss"
+        <DigitalClock x="110" y="302" width="230" height="106">
+            <TimeText x="0" y="0" width="230" height="106" format="ss"
                 align="CENTER" verticalAlign="CENTER">
-                <BitmapFont family="nixie_digits" size="88" color="#FFFFFF"/>
+                <BitmapFont family="nixie_digits" size="48" color="#FFFFFF"/>
                 <Variant mode="AMBIENT">
-                    <BitmapFont family="nixie_digits" size="84" color="#777777"/>
+                    <BitmapFont family="nixie_digits" size="46" color="#777777"/>
                 </Variant>
             </TimeText>
         </DigitalClock>

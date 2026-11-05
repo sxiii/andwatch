@@ -1,4 +1,4 @@
-name: Build NIXIE-01
+name: Matrix Digital Watch Face
 
 on:
   push:
@@ -11,9 +11,8 @@ permissions:
 
 jobs:
   build:
-    name: Build Wear OS watch face
+    name: Validate and build Wear OS watch face
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out source
         uses: actions/checkout@v7
@@ -24,18 +23,33 @@ jobs:
           distribution: temurin
           java-version: "17"
 
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Generate Matrix bitmap digits
+        run: |
+          python -m pip install --disable-pip-version-check Pillow
+          python tools/generate_matrix_digits.py
+
       - name: Set up Android SDK
         uses: android-actions/setup-android@v4
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
         with:
-          # This project does not yet include a Gradle Wrapper.
           gradle-version: "8.13"
 
       - name: Install Android SDK packages
+        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+
+      - name: Validate Watch Face Format XML
         run: |
-          sdkmanager "platforms;android-36" "build-tools;36.0.0"
+          curl --fail --location --retry 3 \
+            https://github.com/google/watchface/releases/download/latest/wff-validator.jar \
+            --output wff-validator.jar
+          java -jar wff-validator.jar 4 app/src/main/res/raw/watchface.xml
 
       - name: Build debug APK
         run: gradle --no-daemon --stacktrace :app:assembleDebug
@@ -43,16 +57,16 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v7
         with:
-          name: NIXIE-01-Dynamic-debug
+          name: Matrix-Digital-WearOS-debug
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
           retention-days: 14
 
-      - name: Upload build reports if build fails
+      - name: Upload reports if build fails
         if: failure()
         uses: actions/upload-artifact@v7
         with:
-          name: NIXIE-01-build-reports
+          name: Matrix-Digital-build-reports
           path: |
             app/build/reports/
             app/build/outputs/logs/

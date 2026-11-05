@@ -1,59 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WatchFace width="450" height="450">
     <BitmapFonts>
-        <BitmapFont name="nixie_digits">
-            <Character name="0" resource="digit_0" width="74" height="180"/>
-            <Character name="1" resource="digit_1" width="74" height="180"/>
-            <Character name="2" resource="digit_2" width="74" height="180"/>
-            <Character name="3" resource="digit_3" width="74" height="180"/>
-            <Character name="4" resource="digit_4" width="74" height="180"/>
-            <Character name="5" resource="digit_5" width="74" height="180"/>
-            <Character name="6" resource="digit_6" width="74" height="180"/>
-            <Character name="7" resource="digit_7" width="74" height="180"/>
-            <Character name="8" resource="digit_8" width="74" height="180"/>
-            <Character name="9" resource="digit_9" width="74" height="180"/>
+        <BitmapFont name="matrix_digits">
+            <Character name="0" resource="matrix_0" width="96" height="72"/>
+            <Character name="1" resource="matrix_1" width="96" height="72"/>
+            <Character name="2" resource="matrix_2" width="96" height="72"/>
+            <Character name="3" resource="matrix_3" width="96" height="72"/>
+            <Character name="4" resource="matrix_4" width="96" height="72"/>
+            <Character name="5" resource="matrix_5" width="96" height="72"/>
+            <Character name="6" resource="matrix_6" width="96" height="72"/>
+            <Character name="7" resource="matrix_7" width="96" height="72"/>
+            <Character name="8" resource="matrix_8" width="96" height="72"/>
+            <Character name="9" resource="matrix_9" width="96" height="72"/>
         </BitmapFont>
     </BitmapFonts>
     <Scene>
-        <Background><Color value="#000000"/></Background>
-        <PartImage x="0" y="0" width="450" height="450">
-            <Image resource="nixie_background"/>
-        </PartImage>
+        <Background>
+            <Color value="#000000"/>
+        </Background>
 
-        <!-- One horizontal tube per time component. -->
-        <DigitalClock x="110" y="42" width="230" height="106">
-            <TimeText x="0" y="0" width="230" height="106" format="hh"
+        <!-- 24-hour clock, stacked vertically: hours / minutes / seconds. -->
+        <DigitalClock x="0" y="0" width="450" height="150">
+            <TimeText x="0" y="0" width="450" height="150" format="HH"
                 align="CENTER" verticalAlign="CENTER">
-                <BitmapFont family="nixie_digits" size="48" color="#FFFFFF"/>
+                <BitmapFont family="matrix_digits" size="112" color="#FFFFFF"/>
                 <Variant mode="AMBIENT">
-                    <BitmapFont family="nixie_digits" size="46" color="#777777"/>
-                </Variant>
-            </TimeText>
-        </DigitalClock>
-        <DigitalClock x="110" y="172" width="230" height="106">
-            <TimeText x="0" y="0" width="230" height="106" format="mm"
-                align="CENTER" verticalAlign="CENTER">
-                <BitmapFont family="nixie_digits" size="48" color="#FFFFFF"/>
-                <Variant mode="AMBIENT">
-                    <BitmapFont family="nixie_digits" size="46" color="#777777"/>
-                </Variant>
-            </TimeText>
-        </DigitalClock>
-        <DigitalClock x="110" y="302" width="230" height="106">
-            <TimeText x="0" y="0" width="230" height="106" format="ss"
-                align="CENTER" verticalAlign="CENTER">
-                <BitmapFont family="nixie_digits" size="48" color="#FFFFFF"/>
-                <Variant mode="AMBIENT">
-                    <BitmapFont family="nixie_digits" size="46" color="#777777"/>
+                    <BitmapFont family="matrix_digits" size="108" color="#777777"/>
                 </Variant>
             </TimeText>
         </DigitalClock>
 
-        <PartAnimatedImage x="0" y="0" width="450" height="450">
-            <AnimationController play="ON_NEXT_SECOND" repeat="FALSE"
-                beforePlaying="DO_NOTHING" afterPlaying="DO_NOTHING"/>
-            <AnimatedImage resource="flicker" format="AGIF"/>
-            <Thumbnail resource="nixie_background"/>
-        </PartAnimatedImage>
+        <DigitalClock x="0" y="150" width="450" height="150">
+            <TimeText x="0" y="0" width="450" height="150" format="mm"
+                align="CENTER" verticalAlign="CENTER">
+                <BitmapFont family="matrix_digits" size="205" color="#FFFFFF"/>
+                <Variant mode="AMBIENT">
+                    <BitmapFont family="matrix_digits" size="198" color="#777777"/>
+                </Variant>
+            </TimeText>
+        </DigitalClock>
+
+        <DigitalClock x="0" y="300" width="450" height="150">
+            <TimeText x="0" y="0" width="450" height="150" format="ss"
+                align="CENTER" verticalAlign="CENTER">
+                <BitmapFont family="matrix_digits" size="112" color="#FFFFFF"/>
+                <Variant mode="AMBIENT">
+                    <BitmapFont family="matrix_digits" size="108" color="#777777"/>
+                </Variant>
+            </TimeText>
+        </DigitalClock>
     </Scene>
 </WatchFace>

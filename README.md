@@ -1,30 +1,21 @@
-# NIXIE-01 Dynamic — Wear OS / Galaxy Watch 8 Classic
+# Matrix Digital — Wear OS / Galaxy Watch 8 Classic
 
-This repository includes a GitHub Actions workflow that builds the Android APK on GitHub-hosted Ubuntu runners.
+A resource-only Watch Face Format project for Wear OS 6.
 
-## GitHub Actions build
+## Design
 
-1. Create a GitHub repository and push this project to it.
-2. Open the repository's **Actions** tab.
-3. The **Build NIXIE-01** workflow runs on every push and pull request. You can also start it manually with **Run workflow**.
-4. Open a successful workflow run and download the `NIXIE-01-Dynamic-debug` artifact.
-5. Extract the artifact ZIP to get the APK.
+- Huge Matrix-inspired green digits, arranged vertically as HH / MM / SS.
+- 24-hour time for hours; minutes and seconds update live.
+- Black background with no labels or decorative text.
+- Matrix-rain bitmap glyphs are generated during CI from `tools/generate_matrix_digits.py`.
+- Dimmed bitmap font variants are provided for ambient mode.
 
-No local Android SDK or Android Studio is required for CI.
+## Build and validation
 
-## Local build (optional)
+GitHub Actions runs Google's official Watch Face Format XML validator (schema version 4) before building the debug APK. It then packages the generated digit assets and uploads the APK as the `Matrix-Digital-WearOS-debug` artifact.
 
-Requires JDK 17, Android SDK 36 and Gradle 8.13:
+Open the repository's Actions tab, select the latest successful run, and download that artifact.
 
-```bash
-gradle --no-daemon :app:assembleDebug
-```
+## Important testing note
 
-## Current prototype status
-
-- WFF resource-only Android project structure
-- Nixie-inspired background and digit assets
-- Animated flicker overlay asset
-- GitHub Actions CI build and APK artifact upload
-
-**Important:** CI packaging success does not by itself prove that the watch face XML passes the official Watch Face Format validator or that every visual element renders as intended on a physical Galaxy Watch 8 Classic. The WFF XML still needs schema validation and on-device testing. This is an early development prototype, not a Play Store-ready release.
+A successful schema validation and APK build confirm the XML/resource package, but do not prove exact typography sizing or rendering on a physical Galaxy Watch 8 Classic. Install the APK and check active and ambient modes on the watch; adjust the three font sizes if the renderer scales bitmap glyphs differently than expected.

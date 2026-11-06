@@ -5,12 +5,19 @@ plugins {
 android {
     namespace 'dev.nixie01.watchface'
     compileSdk 36
-
     defaultConfig {
         applicationId 'dev.nixie01.watchface'
         minSdk 35
         targetSdk 36
-        versionCode 1
-        versionName '0.2'
+        versionCode 2
+        versionName '0.3'
     }
+}
+
+tasks.register('generateWatchFace', Exec) {
+    workingDir rootProject.projectDir
+    commandLine 'python3', 'tools/generate_matrix_digits.py'
+}
+tasks.named('preBuild').configure {
+    dependsOn tasks.named('generateWatchFace')
 }
